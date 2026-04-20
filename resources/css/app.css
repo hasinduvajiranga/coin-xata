@@ -1,0 +1,122 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+@source '../**/*.vue';
+
+@theme {
+    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --color-lime-400: #a3e635;
+    --color-lime-500: #84cc16;
+    --color-lime-600: #65a30d;
+
+    --radius-3xl: 1.5rem;
+    --radius-4xl: 2rem;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+    body {
+        @apply transition-colors duration-300;
+    }
+}
+
+@layer components {
+    .glass {
+        @apply bg-white/70 backdrop-blur-[20px] border border-slate-200/50;
+    }
+
+    .dark .glass {
+        @apply bg-slate-900/60 border-white/5;
+    }
+
+    .glass-card {
+        @apply bg-white/40 backdrop-blur-[16px] border border-slate-200/50 shadow-xl shadow-slate-200/50 rounded-2xl;
+    }
+
+    .dark .glass-card {
+        @apply bg-slate-900/40 border-white/5 shadow-none;
+    }
+
+    .bg-mesh {
+        @apply bg-slate-50 transition-colors duration-500;
+        background-image: 
+            radial-gradient(at 0% 0%, hsla(82, 84%, 67%, 0.15) 0px, transparent 50%),
+            radial-gradient(at 50% 0%, hsla(199, 89%, 48%, 0.1) 0px, transparent 50%),
+            radial-gradient(at 100% 0%, hsla(280, 67%, 60%, 0.1) 0px, transparent 50%);
+    }
+
+    .dark .bg-mesh {
+        @apply bg-[#020617];
+        background-image: 
+            radial-gradient(at 0% 0%, hsla(82, 84%, 67%, 0.15) 0px, transparent 50%),
+            radial-gradient(at 50% 0%, hsla(199, 89%, 48%, 0.1) 0px, transparent 50%),
+            radial-gradient(at 100% 0%, hsla(280, 67%, 60%, 0.1) 0px, transparent 50%);
+    }
+
+    .hover-lift {
+        @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-lime-500/10;
+    }
+
+    .nav-item {
+        @apply flex flex-col items-center gap-2 p-3 transition-all duration-200 text-slate-600 rounded-2xl;
+    }
+
+    .dark .nav-item {
+        @apply text-slate-400;
+    }
+
+    .nav-item.active {
+        @apply text-lime-600;
+    }
+
+    .dark .nav-item.active {
+        @apply text-lime-400;
+    }
+
+    .nav-item.active .nav-icon {
+        @apply bg-gradient-to-br from-lime-500 to-lime-400 text-white shadow-lg shadow-lime-500/30;
+    }
+
+    .nav-item:not(.active) .nav-icon {
+        @apply bg-slate-100 text-slate-500;
+    }
+
+    .dark .nav-item:not(.active) .nav-icon {
+        @apply bg-slate-800;
+    }
+
+    .nav-icon {
+        @apply w-12 h-12 flex items-center justify-center transition-all duration-300 group-hover:scale-110 rounded-xl;
+    }
+
+    .btn-primary {
+        @apply bg-gradient-to-r from-lime-500 to-lime-600 text-white font-bold py-3 px-6 shadow-lg shadow-lime-500/20 hover:shadow-lime-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 rounded-xl;
+    }
+
+    /* Modal roundings */
+    .modal-content {
+        @apply bg-white/40 backdrop-blur-[16px] border border-slate-200/50 shadow-xl shadow-slate-200/50 rounded-[1.5rem];
+    }
+
+    .dark .modal-content {
+        @apply bg-slate-900/40 border-white/5 shadow-none;
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    @apply w-1.5;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-slate-300 dark:bg-slate-700 rounded-full hover:bg-slate-400 dark:hover:bg-slate-600 transition-colors;
+}
